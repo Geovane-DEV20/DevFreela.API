@@ -1,5 +1,6 @@
 ﻿using DevFreela.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace DevFreela.API.Controllers
 {
@@ -8,6 +9,14 @@ namespace DevFreela.API.Controllers
     [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
+
+        private readonly FreelanceTotalCostConfig _config;
+
+        public ProjectsController(IOptions<FreelanceTotalCostConfig> options)
+        {
+            _config = options.Value;
+        }
+
         // Get api/projects?search=crm
 
         [HttpGet]
@@ -29,7 +38,10 @@ namespace DevFreela.API.Controllers
         [HttpPost]
         public IActionResult Post(CreateProjectInputModel model)
         { 
-
+            if(model.TotalCost < _config.Minimum || model.TotalCost > _config.Maximum)
+            {
+                return BadRequest("Número fora dos limites");    
+            }
             return CreatedAtAction(nameof(GetById), new { id = 1 }, model); //CreatedAction gera o código 201
         }
 
