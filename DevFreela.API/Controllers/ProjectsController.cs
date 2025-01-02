@@ -32,8 +32,10 @@ namespace DevFreela.API.Controllers
 
         // Get api/projects/1234
         [HttpGet("{id}")]
-        public IActionResult GetById(int id) {
-            
+        public IActionResult GetById(int id) 
+        
+        {
+            throw new Exception();
             return Ok();    
         }
 
