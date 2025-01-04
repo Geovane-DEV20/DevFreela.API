@@ -5,7 +5,7 @@ namespace DevFreela.API.Entities
     public class Project : BaseEntity
     {
         protected Project() { }
-        public Project(string title, string description, int idClient, int idFreelancer, decimal totalCost, List<Comment> comment) : base()
+        public Project(string title, string description, int idClient, int idFreelancer, decimal totalCost, string comment) : base()
         {
             Title = title;
             Description = description;
@@ -14,7 +14,7 @@ namespace DevFreela.API.Entities
             TotalCost = totalCost;
 
             Status = ProjectStatusEnum.Created;
-            Comment = comment;
+            
 
         }
 
@@ -28,7 +28,7 @@ namespace DevFreela.API.Entities
         public DateTime? StartedAt { get; private set; }
         public DateTime? CompletedAt { get; private set; }
         public ProjectStatusEnum Status { get; private set; }
-        public List<Comment> Comment { get;  set; }
+        public string Comment { get;  set; }
         public List<ProjectComment> Comments { get; private set; }   
 
         public void Cancel()
