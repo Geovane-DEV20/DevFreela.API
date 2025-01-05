@@ -5,16 +5,14 @@ namespace DevFreela.API.Entities
     public class Project : BaseEntity
     {
         protected Project() { }
-        public Project(string title, string description, int idClient, int idFreelancer, decimal totalCost, string comment) : base()
+        public Project(string title, string description, int idClient, int idFreelancer, decimal totalCost)
         {
             Title = title;
             Description = description;
             IdClient = idClient;
             IdFreelancer = idFreelancer;
             TotalCost = totalCost;
-
             Status = ProjectStatusEnum.Created;
-            
 
         }
 
