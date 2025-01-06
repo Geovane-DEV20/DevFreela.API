@@ -26,7 +26,6 @@ namespace DevFreela.API.Entities
         public DateTime? StartedAt { get; private set; }
         public DateTime? CompletedAt { get; private set; }
         public ProjectStatusEnum Status { get; private set; }
-        public string Comment { get;  set; }
         public List<ProjectComment> Comments { get; private set; }   
 
         public void Cancel()
