@@ -21,6 +21,8 @@ namespace DevFreela.API.Controllers
 
         // Get api/projects?search=crm
 
+
+
         [HttpGet]
         public IActionResult Get(string search = "", int page = 0, int size = 3) {
 
