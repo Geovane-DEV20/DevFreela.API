@@ -22,12 +22,12 @@ namespace DevFreela.API.Controllers
         // Get api/projects?search=crm
 
         [HttpGet]
-        public IActionResult Get(string search = "") {
+        public IActionResult Get(string search = "", int page = 0, int size = 3) {
 
             var projects = _context.Projects.Include(p => p.Client)
                 .Include(p => p.Freelancer)
                 .Where(p => !p.IsDeleted && (search == "" || p.Title.Contains(search) || 
-                p.Description.Contains(search))).ToList();
+                p.Description.Contains(search))).ToList().Skip(page * page).Take(size).ToList();
 
 
             var model = projects.Select(ProjectItemViewModel.FromEntity).ToList();
