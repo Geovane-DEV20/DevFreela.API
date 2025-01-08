@@ -21,6 +21,7 @@ namespace DevFreela.Application.Models
         public int Id { get; set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
+        public string Error { get; private set; }
 
         public int IdClient { get; private set; }
         public int IdFreelancer { get; private set; }
