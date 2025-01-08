@@ -88,17 +88,7 @@ namespace DevFreela.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var project = _context.Projects.AsNoTracking().SingleOrDefault(p => p.Id == id);
 
-            if (project == null)
-            {
-                return NotFound();
-
-            }
-
-            project.SetAsDeleted();
-            _context.Projects.Update(project);
-            _context.SaveChanges();
 
             return NoContent();
         }
