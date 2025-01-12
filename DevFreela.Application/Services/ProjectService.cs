@@ -67,11 +67,22 @@ namespace DevFreela.Application.Services
                 return ResultViewModel<List<ProjectItemViewModel>>.Success(model);
             }
 
-            //public ResultViewModel<ProjectViewModel> GetById(int id)
-            //{
+            public ResultViewModel<ProjectViewModel> GetById(int id)
+            {
 
+                var project = _context.Projects.Include(p => p.Client)
+                    .Include(p => p.Freelancer)
+                    .Include(p => p.Comments)
+                    .SingleOrDefault(p => p.Id == id);
 
-            //}
+                if (project is null)
+                {
+                    return ResultViewModel<ProjectViewModel>.Error("Projeto não existe.");
+                }
+
+                var model = ProjectViewModel.FromEntity(project);
+                return ResultViewModel<ProjectViewModel>.Success(model);
+            }
 
             public ResultViewModel<int> Insert(CreateProjectInputModel model)
             {
