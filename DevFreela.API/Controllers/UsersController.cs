@@ -35,16 +35,16 @@ namespace DevFreela.API.Controllers
 
 
         //POST api/users
-        [HttpPost]
-        public IActionResult Post(CreateUserInputModel model)
-        {
+        //[HttpPost]
+        //public IActionResult Post(CreateUserInputModel model)
+        //{
 
-            var user = new User(model.FullName, model.Email, model.BirthDate);
+        //    var user = new User(model.FullName, model.Email, model.BirthDate);
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            return NoContent();
-        }
+        //    _context.Users.Add(user);
+        //    _context.SaveChanges();
+        //    return NoContent();
+        //}
 
         [HttpPost("{id}/skills")]
         public IActionResult PostSkills(int id, UserSkillsInputModel model)
