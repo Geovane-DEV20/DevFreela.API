@@ -80,5 +80,10 @@ namespace DevFreela.Infrastructure.Persistence.Repositories
             await _context.SaveChangesAsync();  
             
         }
+
+        Task<bool> IProjectRepository.Update(Project project)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

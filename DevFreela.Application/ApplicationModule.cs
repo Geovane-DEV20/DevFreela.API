@@ -1,13 +1,5 @@
-﻿using DevFreela.Application.Commands.InsertComment;
-using DevFreela.Application.Commands.InsertProject;
-using DevFreela.Application.Services;
-using MediatR;
+﻿using DevFreela.Application.Commands.InsertProject;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevFreela.Application
 {
@@ -28,7 +20,6 @@ namespace DevFreela.Application
                 config.RegisterServicesFromAssemblyContaining<InsertProjectCommand>());
 
 
-            services.AddTransient<IPipelineBehavior<InsertProjectCommand, ResultViewModel<int>>, ValidateInsertProjectCommandBehavior>();
 
             return services;
         }
